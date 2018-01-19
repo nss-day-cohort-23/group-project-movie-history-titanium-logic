@@ -1,7 +1,8 @@
 {
     "id": 0,
+    "movieName": "",
     "uid": "",
     "stars": 0,
     "dateWatched": 0,
     "dateAdded": 0
-}
+}   
