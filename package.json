@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "firebase": "^4.9.0",
     "grunt": "^1.0.1",
     "grunt-browserify": "^5.2.0",
     "grunt-contrib-jshint": "^1.1.0",
@@ -28,5 +29,6 @@
   "bugs": {
     "url": "https://github.com/nss-day-cohort-23/group-project-movie-history-titanium-logic/issues"
   },
-  "homepage": "https://github.com/nss-day-cohort-23/group-project-movie-history-titanium-logic#readme"
+  "homepage": "https://github.com/nss-day-cohort-23/group-project-movie-history-titanium-logic#readme",
+  "devDependencies": {}
 }
