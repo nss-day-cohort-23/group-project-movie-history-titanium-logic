@@ -1,26 +1,31 @@
 # Movie History
 
 You will be split up into teams, and your team will build a new application to keep track of movies that you have seen, and want to see, with your own ratings.
-* https://www.themoviedb.org
-* Request an api key
+
+## Links
+
+- [Firebase app](https://console.firebase.google.com/u/0/project/titanium-logic/overview)
+- [The Movie Database API](https://developers.themoviedb.org/3)
+    - [Movie search](https://developers.themoviedb.org/3/search/search-movies)
+    - [Cast/credits](https://developers.themoviedb.org/3/credits/get-credit-details)
 
 ## Requirements
 
-1. Must have the ability to register a user in Firebase
-1. Must have the ability to log in
-1. You must use Firebase to store movies
-1. You must be able to add movies
-1. You must be able to remove movies
-1. Each movie must have the following properties
-   1. Movie name
-   1. Year released
-   1. List of major actors
-   1. Movie poster, if available
-   1. An integer rating of 1-5
-   1. A boolean value that, if true, means that you have watched the movie
-1. Use Grunt to automate all the tasks needed during development.
-1. For the layout, we suggest Bootstrap, but if you want to stretch your legs, you can try [Materialize](http://materializecss.com/).
-1. Use of project tickets and features
+- [ ] Must have the ability to register a user in Firebase
+- [ ] Must have the ability to log in
+- [ ] You must use Firebase to store movies
+    - [ ] You must be able to add movies
+    - [ ] You must be able to remove movies
+- [ ] Each movie must have the following properties
+   - [ ] Movie name
+   - [ ] Year released
+   - [ ] List of major actors
+   - [ ] Movie poster, if available
+   - [ ] An integer rating of 1-5
+   - [ ] A boolean value that, if true, means that you have watched the movie
+- [ ] Use Grunt to automate all the tasks needed during development.
+- [ ] For the layout, we suggest Bootstrap, but if you want to stretch your legs, you can try [Materialize](http://materializecss.com/).
+- [ ] Use of project tickets and features
 
 ## Mockup
 
