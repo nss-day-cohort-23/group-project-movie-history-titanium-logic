@@ -2,12 +2,12 @@
 
 const $ = require('jquery');
 
-function activateSearch () {
+const activateSearch = () => {
   // checks active tab in listener
   // on enter listener
 };
 
-function switchTabs (tab) {
+const switchTabs = tab => {
   // search: clear
   // lists: grab recent
 };
