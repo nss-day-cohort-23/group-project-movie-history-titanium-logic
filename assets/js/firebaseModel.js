@@ -29,6 +29,6 @@ module.exports.searchWishlist = (uid, term) => {
     
 };
 
-module.exports.searchwatched = (uid, term) => {
+module.exports.searchWatched = (uid, term) => {
     
 };
