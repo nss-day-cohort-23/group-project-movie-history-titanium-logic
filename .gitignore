@@ -2,4 +2,5 @@
 **.sass-cache/
 assets/css
 dist/
+assets/js/tmdbCreds.js
 assets/js/fbCreds.js
