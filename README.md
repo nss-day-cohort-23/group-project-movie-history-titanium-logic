@@ -8,6 +8,7 @@ You will be split up into teams, and your team will build a new application to k
 - [The Movie Database API](https://developers.themoviedb.org/3)
     - [Movie search](https://developers.themoviedb.org/3/search/search-movies)
     - [Cast/credits](https://developers.themoviedb.org/3/credits/get-credit-details)
+- [NSS original repo](https://github.com/nashville-software-school/group-project-movie-history)
 
 ## Requirements
 
