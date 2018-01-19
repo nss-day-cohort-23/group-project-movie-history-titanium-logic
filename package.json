@@ -28,5 +28,6 @@
   "bugs": {
     "url": "https://github.com/nss-day-cohort-23/group-project-movie-history-titanium-logic/issues"
   },
-  "homepage": "https://github.com/nss-day-cohort-23/group-project-movie-history-titanium-logic#readme"
+  "homepage": "https://github.com/nss-day-cohort-23/group-project-movie-history-titanium-logic#readme",
+  "devDependencies": {}
 }
