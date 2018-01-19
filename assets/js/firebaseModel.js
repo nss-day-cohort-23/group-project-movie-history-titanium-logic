@@ -1,7 +1,16 @@
 "use strict";
 
-module.exports.getWishlist = (uid) => {
+const firebase = require("./fbConfig");
+const $ = require("jquery");
 
+// tested: works without uid
+module.exports.getWishlist = (uid) => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `https://titanium-logic.firebaseio.com/movies.json?orderBy="dateWatched"&equalTo=null`
+        }).done(wishlist => resolve(wishlist))
+        .fail(error => reject(error));
+    });
 };
 
 module.exports.getWatchedlist = (uid) => {

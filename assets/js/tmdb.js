@@ -1,13 +1,21 @@
 "use strict";
 
 const $ = require("jquery");
+const tmdbCreds = require("./tmdbCreds");
 
-const searchMovies = (term, limit) => {
-    // promises a list of $limit movies based on response to following API call:
-    //      https://developers.themoviedb.org/3/search/search-movies
+// promises list of movies matching the TMDb search `${term}`
+const searchMovies = term => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `https://api.themoviedb.org/3/search/movie?api_key=${tmdbCreds.tmdbKey}&language=en-US&query=${term}&page=1&include_adult=false`
+        }).done(movies => resolve(movies))
+        .fail(error => reject(error));
+    });
 };
 
 const getCast = movieId => {
     // promises the cast for the movie with given id
     //      https://developers.themoviedb.org/3/credits/get-credit-details
 };
+
+module.exports = {searchMovies};
