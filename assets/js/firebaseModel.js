@@ -9,19 +9,19 @@ module.exports.getWatchedlist = (uid) => {
 
 };
 
-module.exports.rateMovie = (uid, id, stars) => {
+module.exports.rateMovie = (uid, movieId, stars) => {
     
 };
 
-module.exports.addMovie = (uid, id, date) => {
+module.exports.addMovie = (uid, movieId, date) => {
     
 };
 
-module.exports.watchMovie = (uid, id, date) => {
+module.exports.watchMovie = (uid, movieId, date) => {
     
 };
 
-module.exports.deleteMovie = (uid, id) => {
+module.exports.deleteMovie = (uid, movieId) => {
     
 };
 
