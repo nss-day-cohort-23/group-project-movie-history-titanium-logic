@@ -21,7 +21,14 @@ $color: #385f72;
 #searchBar:focus {
     border-bottom: 1px solid $color;
     box-shadow: 0 1px 0 0 $color;
-  }
+}
+label {
+    color: $color !important;
+    &.active{
+        color: lightgray !important;
+    }
+}
+
 
 #tabNav {
     margin-bottom: 3em;
@@ -40,4 +47,9 @@ i.icon-blue {
 
 .mb0 {
     margin-bottom: 0 !important;
+}
+
+.input-field .prefix.active,
+input[type=text]:focus {
+    color: lightgray !important;
 }
