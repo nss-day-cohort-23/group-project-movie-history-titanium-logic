@@ -7,3 +7,22 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+.margin-bottom {
+    margin-bottom: 1em;
+}
+
+.input-field {
+    margin-top:  0;
+}
+
+
+$color: #607d8b;
+#searchBar:focus {
+    border-bottom: 1px solid $color;
+    box-shadow: 0 1px 0 0 $color;
+  }
+
+#tabNav {
+    margin-bottom: 3em;
+}
