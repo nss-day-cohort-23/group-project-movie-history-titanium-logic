@@ -17,7 +17,7 @@ body {
 }
 
 
-$color: #607d8b;
+$color: #385f72;
 #searchBar:focus {
     border-bottom: 1px solid $color;
     box-shadow: 0 1px 0 0 $color;
@@ -25,4 +25,11 @@ $color: #607d8b;
 
 #tabNav {
     margin-bottom: 3em;
+}
+
+i.icon-blue {
+    color: $color;
+    &:hover {
+        color: lightgray;
+    }
 }
