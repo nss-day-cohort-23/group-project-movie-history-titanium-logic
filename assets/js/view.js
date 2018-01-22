@@ -4,7 +4,18 @@ const tmdb = require('./tmdb');
 const userData = require('./firebaseModel');
 const auth = require("./user-factory");
 const movieCard = require("./../templates/movieCard.hbs");
+const firebase = require("firebase");
 
+// Listen to if the user is logged in
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) { // User is logged   in
+    $("#auth-btn").hide();
+    $("#logout-btn").show();
+  } else { // No user is logged in
+    $("#logout-btn").hide();
+    $("#auth-btn").show();
+  }
+});
 
 module.exports.showMovies = (moviesArr)=>{
   clearMovies();
