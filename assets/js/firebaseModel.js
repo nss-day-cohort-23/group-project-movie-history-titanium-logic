@@ -20,8 +20,7 @@ module.exports.rateMovie = (uid, movieId, stars) => {
     // determine number of filled stars for movie
 };
 
-module.exports.addMovie = (uid, movieId) => {
-    function addToWishlist(newMovie) {
+module.exports.addMovie = (newMovie) => {
         return new Promise((resolve, reject) => {
           $.ajax({
             url: `${fbURL}/movies.json`,
@@ -32,7 +31,6 @@ module.exports.addMovie = (uid, movieId) => {
             resolve();
           });
         });
-    }
 };
 
 module.exports.deleteMovie = (uid, movieId) => {

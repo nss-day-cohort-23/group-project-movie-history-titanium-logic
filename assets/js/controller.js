@@ -4,6 +4,7 @@ const firebase = require("./fbConfig");
 const auth = require("./user-factory");
 const tmdb = require('./tmdb');
 const view = require('./view');
+const fbModel = require('./firebaseModel');
 
 // activates all listeners
 module.exports.activateListeners = () => {
@@ -48,13 +49,14 @@ const activateSearch = () => {
     });
     
     $("#movieList").on("click", ".wish", function(e) {
-      console.log($(e.target).parent());     
+      console.log($(e.target).parent().data("movieid"));     
       // let currentUser = firebase.auth().currentUser;
-      // let newMovie = {
-      //   id: $(e.parent),
-      //   uid: currentUser.uid
-      // };
-      // addTodo(todoObj).then(() => {
+      let newMovie = {
+        id: $(e.target).parent().data("movieid"),
+        // uid: currentUser.uid
+      };
+      fbModel.addMovie(newMovie);
+      // .then(() => {
       //     displayTodos(todoObj.uid);
       // });
     });
