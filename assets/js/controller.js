@@ -47,12 +47,11 @@ const activateSearch = () => {
         }
     });
     
-    $(".wish").on("click", function() {
-      console.log("add called");
+    $("#movieList").on("click", ".wish", function(e) {
+      console.log($(e.target).parent());     
       // let currentUser = firebase.auth().currentUser;
-      // let todoObj = {
-      //   task: $("#todoTask").val(),
-      //   description: $("#todoDesc").val(),
+      // let newMovie = {
+      //   id: $(e.parent),
       //   uid: currentUser.uid
       // };
       // addTodo(todoObj).then(() => {
@@ -61,8 +60,3 @@ const activateSearch = () => {
     });
 };
 
-
-
-const activateSearch = () => {
-    // on enter listener
-};
