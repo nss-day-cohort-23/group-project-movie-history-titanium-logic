@@ -27,7 +27,6 @@ module.exports.addMovie = (newMovie) => {
             method: "POST",
             data: JSON.stringify(newMovie)
           }).done(() => {
-            console.log("added new movie");
             resolve();
           });
         });
