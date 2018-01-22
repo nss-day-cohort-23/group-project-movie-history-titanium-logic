@@ -18,6 +18,9 @@ module.exports.showMovies = (moviesArr)=>{
             $('#searchOutput').append(`
             <div class="col s4 movieCards">
                <div class="card small horizontal">
+                <a href="#" onclick="Materialize.toast('Added', 4000)" class="mr0" >
+                   <i class="material-icons icon-blue">add</i>
+                </a>
                   <div class="card-image">
                      <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}">
                   </div>

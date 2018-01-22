@@ -37,6 +37,10 @@ module.exports.activateListeners = () => {
 
 };
 
+$("addToWish").click(function(e) {
+  console.log(e);
+});
+
 
 const activateSearch = () => {
   // on enter listener
