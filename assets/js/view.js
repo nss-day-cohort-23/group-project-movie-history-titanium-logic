@@ -12,6 +12,7 @@ module.exports.showMovies = (moviesArr)=>{
    moviesArr.forEach((movie, key) => {
      if (key < 6) {
       let actors;
+      $("#movieList .row").html("");
       tmdb.getCast(movie.id)
          .then(cast=>{
             actors = tmdb.makeCastList(cast).join(', ');
