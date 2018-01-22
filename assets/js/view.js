@@ -9,7 +9,8 @@ module.exports.showMovies = (moviesArr)=>{
    // clearMovies()
    $('#searchOutput').html('');
    
-   moviesArr.forEach(movie => {
+   moviesArr.forEach((movie, key) => {
+     if (key < 6) {
       let actors;
       tmdb.getCast(movie.id)
          .then(cast=>{
@@ -36,6 +37,7 @@ module.exports.showMovies = (moviesArr)=>{
             </div>
             `);
          });
+      }
    });
 };
 
