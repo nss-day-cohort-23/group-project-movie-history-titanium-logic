@@ -7,15 +7,22 @@ const $ = require("jquery");
 module.exports.getWishlist = (uid) => {
     return new Promise((resolve, reject) => {
         $.ajax({
+            // dateWatched == null (isn't defined)
             url: `https://titanium-logic.firebaseio.com/movies.json?orderBy="dateWatched"&equalTo=null`
         }).done(wishlist => resolve(wishlist))
         .fail(error => reject(error));
     });
 };
 
+// tested: works without uid
 module.exports.getWatchedlist = (uid) => {
-    // where dateWatched !== 0
-
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            // dateWatched >= 1
+            url: `https://titanium-logic.firebaseio.com/movies.json?orderBy="dateWatched"&startAt=1`
+        }).done(watchedList => resolve(watchedList))
+        .fail(error => reject(error));
+    });
 };
 
 module.exports.rateMovie = (uid, movieId, stars) => {
