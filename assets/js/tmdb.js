@@ -1,13 +1,35 @@
 "use strict";
-
 const $ = require("jquery");
+const creds = require('./tmdbCreds');
 
-const searchMovies = (term, limit) => {
-    // promises a list of $limit movies based on response to following API call:
-    //      https://developers.themoviedb.org/3/search/search-movies
+module.exports.searchMovies = term => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `https://api.themoviedb.org/3/search/movie?api_key=${creds.tmdbKey}&query=${term}`
+        })
+        .done(data=>{
+            resolve(data.results);
+        });
+    });
 };
 
-const getCast = movieId => {
-    // promises the cast for the movie with given id
-    //      https://developers.themoviedb.org/3/credits/get-credit-details
+module.exports.getCast = movieId => {
+    return new Promise((resolve,reject)=>{
+        $.ajax({
+            url: `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${creds.tmdbKey}`
+        })
+        .done(data=>{
+            resolve(data.cast);
+        });
+    });
 };
+
+module.exports.makeCastList = castArr =>{
+    let actors = [];
+    for(let i=0;i<4;i++){
+        actors.push(castArr[i].name);
+    }
+    console.log('name1', actors);
+    return actors;
+};
+

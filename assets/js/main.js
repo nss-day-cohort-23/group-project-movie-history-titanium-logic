@@ -1,6 +1,6 @@
 "use strict";
-const $ = require("jquery");
+const $ = require('jquery'); 
+const controller = require('./controller');
 
-// $(document).ready(function(){
-//     $(".button-collapse").sideNav();
-// });
+
+controller.activateListeners();
