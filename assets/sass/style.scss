@@ -1,0 +1,65 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+.margin-bottom {
+    margin-bottom: 1em;
+}
+
+.input-field {
+    margin-top:  0;
+}
+
+
+$color: #385f72;
+#searchBar:focus {
+    border-bottom: 1px solid $color;
+    box-shadow: 0 1px 0 0 $color;
+    color: $color !important;
+}
+label {
+    color: $color !important;
+    &.active{
+        color: lightgray !important;
+    }
+}
+
+input[type=text].valid:not(.browser-default) {
+    border-bottom: 1px solid $color;
+    -webkit-box-shadow: 0 1px 0 0 $color;
+    box-shadow: 0 1px 0 0 $color;
+}
+
+#tabNav {
+    margin-bottom: 3em;
+}
+
+i.icon-blue {
+    color: $color;
+    &:hover {
+        color: lightgray;
+    }
+}
+
+.mr0 {
+    margin-right: 0 !important;
+}
+
+.mb0 {
+    margin-bottom: 0 !important;
+}
+
+.input-field .prefix.active,
+input[type=text]:focus {
+    color: lightgray !important;
+}
+
+.card-image > img {
+    object-fit: cover;
+}
