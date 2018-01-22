@@ -1,3 +1,4 @@
+
 body {
     display: flex;
     min-height: 100vh;
@@ -62,4 +63,17 @@ input[type=text]:focus {
 
 .card-image > img {
     object-fit: cover;
+}
+
+
+#movieOutput p{
+   width: 16em;
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+}
+
+
+.movieCards img{
+   width: 10em;
 }
