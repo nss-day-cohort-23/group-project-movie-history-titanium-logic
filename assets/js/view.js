@@ -7,19 +7,20 @@ const movieCard = require("./../templates/movieCard.hbs");
 
 module.exports.showMovies = (moviesArr)=>{
    // clearMovies()
-   $('#movieList .row').html('');
+   $('#movieList > .row').html('');
   
   moviesArr.map(movie => {
     movie.release_date = movie.release_date.substring(0, 4);
     return movie;
   });
-   moviesArr.forEach((movie, key) => {
-     if (key < 6) {
+
+  moviesArr.forEach((movie, key) => {
+    if (key < 6) {
       let actors;
       tmdb.getCast(movie.id)
          .then(cast => {
             actors = tmdb.makeCastList(cast).join(', ');
-            $('#movieList .row').append(movieCard({movie, actors}));
+            $('#movieList > .row').append(movieCard({movie, actors}));
          });
       }
    });
