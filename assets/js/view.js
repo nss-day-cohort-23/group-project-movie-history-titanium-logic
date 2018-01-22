@@ -41,10 +41,6 @@ module.exports.showMovies = (moviesArr)=>{
    });
 };
 
-module.exports.activateTab = (tab)=>{
-   // changes class
-};
-
 const clearMovies=()=>{
    // clear dom
 };
