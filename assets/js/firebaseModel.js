@@ -2,16 +2,17 @@
 
 const firebase = require("./fbConfig");
 const $ = require("jquery");
+const _ = require("lodash");
 
 const fbURL = "https://titanium-logic.firebaseio.com";
 
 // tested: works without uid
-module.exports.getMovies = (uid) => {
+const getMovies = (uid) => {
     return new Promise((resolve, reject) => {
         $.ajax({
             // dateWatched == null (isn't defined)
             url: `https://titanium-logic.firebaseio.com/movies.json?orderBy="dateAdded"`
-        }).done(wishlist => resolve(wishlist))
+        }).done(movies => resolve(_.values(movies)))
         .fail(error => reject(error));
     });
 };
@@ -48,6 +49,14 @@ module.exports.deleteMovie = (uid, movieId) => {
       });
     };
 
-module.exports.search = (uid, term) => {
-    
+module.exports.searchMovies = (uid, term) => {
+    return new Promise((resolve, reject) => {
+        getMovies(uid).then(movies => {
+            let regex = new RegExp(term, "i");
+            resolve(movies.filter(movie => regex.test(movie.title)));
+        })
+        .catch(error => reject(error));
+    });
 };
+
+module.exports.getMovies = getMovies;
