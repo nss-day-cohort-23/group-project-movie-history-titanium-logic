@@ -12,7 +12,6 @@ module.exports.authUser = () => {
 };
 
 module.exports.logout = () => {
-    firebase.GoogleSignInApi.signOut();
     return firebase.auth().signOut();
 };
 
