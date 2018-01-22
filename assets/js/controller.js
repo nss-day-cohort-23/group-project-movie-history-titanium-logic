@@ -67,7 +67,7 @@ const activateSearch = () => {
       };
       fbModel.addMovie(newMovie);
       // .then(() => {
-      //     displayTodos(todoObj.uid);
+      //     view.showMovies(newMovie.uid);
       // });
     });
 };

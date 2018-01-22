@@ -21,20 +21,32 @@ module.exports.rateMovie = (uid, movieId, stars) => {
 };
 
 module.exports.addMovie = (newMovie) => {
-        return new Promise((resolve, reject) => {
-          $.ajax({
+    return new Promise((resolve, reject) => {
+        $.ajax({
             url: `${fbURL}/movies.json`,
             method: "POST",
             data: JSON.stringify(newMovie)
-          }).done(() => {
+        }).done(() => {
             resolve();
-          });
         });
+    });
 };
 
 module.exports.deleteMovie = (uid, movieId) => {
-    
-};
+    return new Promise((resolve, reject) => {
+        $.ajax({
+          url: `${fbURL}/movies.json`,
+          method: "DELETE"
+        })
+        .done(data => {
+            resolve(data);
+        })
+        .fail(error => {
+            console.log(error.statusText);
+            reject(error);
+        });
+      });
+    };
 
 module.exports.search = (uid, term) => {
     
