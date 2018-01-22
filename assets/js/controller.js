@@ -24,7 +24,7 @@ const activateAuthButton = () => {
     $('#auth-btn').click(() => {
         auth.authUser()
             .then(function (result) {
-                console.log('user', result);
+                auth.setActiveUser(result.user);
             })
             .catch(function (error) {
                 let errorCode = error.code;
