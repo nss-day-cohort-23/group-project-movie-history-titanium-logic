@@ -14,7 +14,6 @@ module.exports.showMovies = (moviesArr)=>{
       let actors;
       tmdb.getCast(movie.id)
          .then(cast=>{
-            actors = tmdb.makeCastList(cast).join(', ');
             $('#searchOutput').append(`
             <div class="col s4 movieCards">
                <div class="card small horizontal">
@@ -26,7 +25,7 @@ module.exports.showMovies = (moviesArr)=>{
                      <div class="card-content">
                         <h5>${movie.title}</h5>
                         <p>2017</p>
-                        <p>${actors}</p>
+                        <p>${cast}</p>
                      </div>
                      <div class="card-action center-align">
                         <a href="#" onclick="Materialize.toast('Added', 4000)" class="mr0"><i class="material-icons icon-blue">add</i></a>
