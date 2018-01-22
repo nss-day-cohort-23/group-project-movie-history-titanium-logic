@@ -49,11 +49,11 @@ const activateSearch = () => {
     });
     
     $("#movieList").on("click", ".wish", function(e) {
-      console.log($(e.target).parent().data("movieid"));     
+      console.log($(e.target).parent().prev().find("h5").text());     
       // let currentUser = firebase.auth().currentUser;
       let newMovie = {
         id: $(e.target).parent().data("movieid"),
-        // uid: currentUser.uid
+        title: $(e.target).parent().prev().find("h5").text()
       };
       fbModel.addMovie(newMovie);
       // .then(() => {
