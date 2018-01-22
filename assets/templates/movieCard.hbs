@@ -1,4 +1,8 @@
-<div class="col s12 m6 l4">
+{{#if movie.class}}
+    <div class="col s12 m6 l4 {{movie.class}}">
+{{else}}
+    <div class="col s12 m6 l4">
+{{/if}}
     <div class="card small horizontal">
         <div class="card-image">
             <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}">
@@ -14,7 +18,7 @@
                     <i class="material-icons icon-blue">cancel</i>
                 </a>
                 <div class="row mb0">
-                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
+                    <a href="#" class="mr0"><i class="  material-icons tiny icon-blue">star</i></a>
                     <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
                     <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
                     <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
