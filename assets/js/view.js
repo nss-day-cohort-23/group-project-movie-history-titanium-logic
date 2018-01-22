@@ -28,8 +28,8 @@ module.exports.showMovies = (moviesArr)=>{
       let actors;
       tmdb.getCast(movie.id)
          .then(cast => {
-            actors = tmdb.makeCastList(cast).join(', ');
-            $('#movieList > .row').append(movieCard({movie, actors}));
+           movie.cast = cast;
+            $('#movieList > .row').append(movieCard({movie}));
          });
       }
    });

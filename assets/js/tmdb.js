@@ -19,16 +19,13 @@ module.exports.getCast = movieId => {
             url: `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${creds.tmdbKey}`
         })
         .done(data=>{
-            resolve(data.cast);
+            resolve(makeCastList(data.cast));
         });
     });
 };
 
-module.exports.makeCastList = castArr =>{
-    let actors = [];
-    for(let i=0;i<castArr.length;i++){
-        actors.push(castArr[i].name);
-    }
-    return actors;
+const makeCastList = castArr =>{
+    let actorNames = castArr.map(cast => cast.name);
+    return actorNames.slice(0,3).join(", ");
 };
 
