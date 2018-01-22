@@ -16,6 +16,12 @@ body {
     margin-top:  0;
 }
 
+@media screen and (max-width: 600px) {
+    .brand-logo {
+      text-align: center;
+    }
+  }
+
 
 $color: #385f72;
 #searchBar:focus {

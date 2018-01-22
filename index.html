@@ -13,11 +13,17 @@
 </head>
 <body >
     <nav class="blue-grey lighten-2 margin-bottom">
-        <div class="nav-wrapper container ">
-            <a href="#" class="brand-logo left">Titanium Logic</a>
+        <div class="nav-wrapper container">
+                
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a href="#" class="brand-logo">Titanium Logic</a>
             <ul class="right">
+            <ul class="right hide-on-med-and-down">
                 <li><a href="#">Login/Register</a></li>
-                <!-- <li><a class="active" href="sass.html">Sass</a></li> -->
+                <li><a href="#">Logout</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="#">Login/Register</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
         </div>
@@ -26,7 +32,7 @@
         <div class="container" id="tabNav">
 
             <div class="row">
-                <div class="col s6">
+                <div class="col s12 m6">
                     <ul class="tabs">
                         <li class="tab col"><a class="blue-grey-text active" href="#search">Search</a></li>
                         <li class="tab col"><a class="blue-grey-text" href="#wishlist">Wishlist</a></li>
@@ -35,7 +41,7 @@
                         <div class="indicator blue-grey" style="z-index:1"></div>
                     </ul>
                 </div>
-                <div class="input-field col s6 valign-wrapper">
+                <div class="input-field col s12 m6 valign-wrapper">
                     <i class="material-icons prefix icon-blue">search</i>
                     <input id="searchBar" type="text" class="validate">
                     <label for="searchBar">Title</label>
@@ -47,7 +53,7 @@
             <!-- <div class="container"> -->
                 <!-- Search Card -->
             <div class="row">
-                <div class="col s4">
+                <div class="col s12 m6 l4">
                     <!-- <h2 class="header">Horizontal Card</h2> -->
                     <div class="card small horizontal">
 
@@ -57,7 +63,7 @@
                         <div class="card-stacked">
                         <div class="card-content">
                             <h5>Dunkirk</h5>
-                            <p>2017</p>
+                            <p class="date">2017</p>
                             <p>Harry Styles, Tom Hardy, Cillian Murphy...</p>
                         </div>
                         <div class="card-action center-align">
@@ -67,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s4">
+                <div class="col s12 m6 l4">
                         <!-- <h2 class="header">Horizontal Card</h2> -->
                         <div class="card small horizontal">
     
@@ -77,7 +83,7 @@
                             <div class="card-stacked">
                             <div class="card-content">
                                 <h5>Dunkirk</h5>
-                                <p>2017</p>
+                                <p class="date">2017</p>
                                 <p>Harry Styles, Tom Hardy, Cillian Murphy...</p>
                             </div>
                             <div class="card-action center-align">
@@ -87,7 +93,7 @@
                             </div>
                         </div>
                     </div>
-                <div class="col s4">
+                <div class="col s12 m6 l4">
                     <!-- <h2 class="header">Horizontal Card</h2> -->
                     <div class="card small horizontal">
                         <div class="card-image">
@@ -96,7 +102,7 @@
                         <div class="card-stacked">
                         <div class="card-content">
                             <h5>Dunkirk</h5>
-                            <p>2017</p>
+                            <p class="date">2017</p>
                             <p>Harry Styles, Tom Hardy, Cillian Murphy...</p>
                         </div>
                         <div class="card-action center-align">
@@ -112,7 +118,7 @@
         <div id="wishlist" class="container">
             <!-- Wishlist Card -->
             <div class="row">
-                <div class="col s6">
+                <div class="col s12 m6 l4">
                     <!-- <h2 class="header">Horizontal Card</h2> -->
                     <div class="card small horizontal">
                         <div class="card-image">
@@ -121,7 +127,7 @@
                         <div class="card-stacked">
                         <div class="card-content">
                             <h5>Dunkirk</h5>
-                            <p>2017</p>
+                            <p class="date">2017</p>
                             <p>Harry Styles, Tom Hardy, Cillian Murphy...</p>
                         </div>
                         <div class="card-action center-align">
@@ -136,7 +142,7 @@
         <div id="watched" class="container">
              <!-- Wishlist Card -->
             <div class="row">
-            <div class="col s6">
+            <div class="col s12 m6 l4">
                 <!-- <h2 class="header">Horizontal Card</h2> -->
                 <div class="card small horizontal">
                     <div class="card-image">
@@ -145,7 +151,7 @@
                     <div class="card-stacked">
                     <div class="card-content">
                         <h5>Dunkirk</h5>
-                        <p>2017</p>
+                        <p class="date">2017</p>
                         <p>Harry Styles, Tom Hardy, Cillian Murphy...</p>
                     </div>
                     <div class="card-action center-align">
@@ -186,7 +192,7 @@
         
 
         <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+        <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.js"></script>
         <script src="dist/bundle.js"></script>
 </body>
 </html>
