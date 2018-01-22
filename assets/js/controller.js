@@ -25,9 +25,9 @@ module.exports.activateListeners = () => {
   });
 
 
-  $('#searchInput').on('keypress', function(e){
+  $('#searchBar').on('keypress', function(e){
     if(e.keyCode === 13){
-      let search = $('#searchInput').val();
+      let search = $('#searchBar').val();
       tmdb.searchMovies(search)
       .then(list=>{
         view.showMovies(list);

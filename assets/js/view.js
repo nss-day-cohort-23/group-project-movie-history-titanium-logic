@@ -7,17 +7,33 @@ const auth = require("./user-factory");
 
 module.exports.showMovies = (moviesArr)=>{
    // clearMovies()
+   $('#searchOutput').html('');
+   
    moviesArr.forEach(movie => {
       let actors;
       tmdb.getCast(movie.id)
          .then(cast=>{
             actors = tmdb.makeCastList(cast).join(', ');
-            $('#movieOutput').append(`
-               <div class='movieCards'>
-               <h4 id="${movie.id}">${movie.title}</h4>
-               <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="">
-               <p>${actors}</p>
-               <div>
+            $('#searchOutput').append(`
+            <div class="col s4 movieCards">
+               <div class="card small horizontal">
+                  <div class="card-image">
+                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}">
+                  </div>
+
+                  <div class="card-stacked">
+                     <div class="card-content">
+                        <h5>${movie.title}</h5>
+                        <p>2017</p>
+                        <p>${actors}</p>
+                     </div>
+                     <div class="card-action center-align">
+                        <a href="#" onclick="Materialize.toast('Added', 4000)" class="mr0"><i class="material-icons icon-blue">add</i></a>
+                        <a href="#" class="mr0" onclick="Materialize.toast('Watched', 4000)"><i class="material-icons icon-blue">remove_red_eye</i></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
             `);
          });
    });
