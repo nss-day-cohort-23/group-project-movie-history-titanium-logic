@@ -11,7 +11,7 @@ module.exports.showMovies = (moviesArr)=>{
   
   moviesArr.map(movie => {
     movie.release_date = movie.release_date.substring(0, 4);
-
+    
     if(typeof movie.stars !== "undefined"){
       if(movie.stars >= 8){
         movie.class = "favorite";
@@ -20,17 +20,21 @@ module.exports.showMovies = (moviesArr)=>{
       } else {
         movie.class = "watched";
       }
+
+      // Add  objects for handelbars to loop over to know the count.  Handlebars does not have a for loop, but it does have foreach.
+
+      let movieStars = [];
+      for(let i = 0; i < 10; i++){ 
+        if(i < movie.stars){
+          movieStars.push({star: true});
+        } else {
+          movieStars.push({});
+        }
+      }
+      movie.stars = movieStars;
+
     }
     
-    let movieStars = [];
-    for(let i = 0; i < 10; i++){ // Add  objects for handelbars to loop over to know the count.  Handlebars does not have a for loop, but it does have foreach.
-      if(i < movie.stars){
-        movieStars.push({star: true});
-      } else {
-        movieStars.push({});
-      }
-    }
-    movie.stars = movieStars;
 
     return movie;
   });
