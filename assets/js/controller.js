@@ -34,12 +34,21 @@ module.exports.activateListeners = () => {
                 });
         }
     });
-
+    
+    $(".wish").on("click", function() {
+      console.log("add called");
+      // let currentUser = firebase.auth().currentUser;
+      // let todoObj = {
+      //   task: $("#todoTask").val(),
+      //   description: $("#todoDesc").val(),
+      //   uid: currentUser.uid
+      // };
+      // addTodo(todoObj).then(() => {
+      //     displayTodos(todoObj.uid);
+      // });
+    });
 };
 
-$("addToWish").click(function(e) {
-  console.log(e);
-});
 
 
 const activateSearch = () => {

@@ -20,7 +20,7 @@ module.exports.rateMovie = (uid, movieId, stars) => {
     // determine number of filled stars for movie
 };
 
-module.exports.addMovie = (uid, movieId, date) => {
+module.exports.addMovie = (uid, movieId) => {
     function addToWishlist(newMovie) {
         return new Promise((resolve, reject) => {
           $.ajax({
