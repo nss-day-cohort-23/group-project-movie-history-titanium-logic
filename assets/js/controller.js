@@ -10,6 +10,7 @@ module.exports.activateListeners = () => {
     activateAuthButton();
     activateLogoutButton();
     activateSearch();
+    view.viewLogin();
 };
 
 
