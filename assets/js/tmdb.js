@@ -26,10 +26,9 @@ module.exports.getCast = movieId => {
 
 module.exports.makeCastList = castArr =>{
     let actors = [];
-    for(let i=0;i<4;i++){
+    for(let i=0;i<castArr.length;i++){
         actors.push(castArr[i].name);
     }
-    console.log('name1', actors);
     return actors;
 };
 
