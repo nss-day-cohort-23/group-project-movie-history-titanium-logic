@@ -11,18 +11,10 @@ module.exports.activateListeners = () => {
     activateAuthButton();
     activateLogoutButton();
     activateSearch();
+    view.viewLogin();
 };
 
-// Listen to if the user is logged in
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) { // User is logged   in
-    $("#auth-btn").hide();
-    $("#logout-btn").show();
-  } else { // No user is logged in
-    $("#logout-btn").hide();
-    $("#auth-btn").show();
-  }
-});
+
 
 // activate listener on logout button
 const activateLogoutButton = () => {
