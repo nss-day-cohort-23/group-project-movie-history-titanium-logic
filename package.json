@@ -20,7 +20,8 @@
     "hbsfy": "^2.8.1",
     "jquery": "^3.3.0",
     "lodash": "^4.17.4",
-    "matchdep": "^2.0.0"
+    "matchdep": "^2.0.0",
+    "materialize-css": "^0.100.2"
   },
   "repository": {
     "type": "git",
