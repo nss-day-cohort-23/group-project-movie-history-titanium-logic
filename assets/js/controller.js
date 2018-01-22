@@ -11,6 +11,7 @@ module.exports.activateListeners = () => {
     activateAuthButton();
     activateLogoutButton();
     activateSearch();
+    view.checkLogin();
 };
 
 // Listen to if the user is logged in
