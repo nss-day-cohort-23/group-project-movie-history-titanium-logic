@@ -4,6 +4,7 @@ const firebase = require("./fbConfig");
 const auth = require("./user-factory");
 const tmdb = require('./tmdb');
 const view = require('./view');
+const fbModel = require('./firebaseModel');
 
 // activates all listeners
 module.exports.activateListeners = () => {
@@ -57,4 +58,17 @@ const activateSearch = () => {
                 });
         }
     });
+    
+    $("#movieList").on("click", ".wish", function(e) {     
+      // let currentUser = firebase.auth().currentUser;
+      let newMovie = {
+        id: $(e.target).parent().data("movieid"),
+        title: $(e.target).parent().prev().find("h5").text()
+      };
+      fbModel.addMovie(newMovie);
+      // .then(() => {
+      //     displayTodos(todoObj.uid);
+      // });
+    });
 };
+

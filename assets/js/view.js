@@ -39,6 +39,7 @@ module.exports.showMovies = (moviesArr)=>{
     return movie;
   });
 
+
     moviesArr.forEach((movie, key) => {
         if (key < 6) {
             tmdb.getCast(movie.id)
