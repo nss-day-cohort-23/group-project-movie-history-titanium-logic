@@ -32,17 +32,17 @@
         <div class="container" id="tabNav">
 
             <div class="row">
-                <div class="col s12 m6">
+                <div class="col s12 m7">
                     <ul class="tabs">
                         <li class="tab col"><a class="blue-grey-text active" href="#">Search</a></li>
                         <li class="tab col"><a class="blue-grey-text" href="#">Wishlist</a></li>
                         <!-- <li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li> -->
                         <li class="tab col"><a class="blue-grey-text" href="#">Watched</a></li>
                         <li class="tab col"><a class="blue-grey-text" href="#">Favorites</a></li>
-                        <div class="indicator blue-grey" style="z-index:1"></div>
+                        <div class="indicator blue-grey" style="z-index:1"></di v>
                     </ul>
                 </div>
-                <div class="input-field col s12 m6 valign-wrapper">
+                <div class="input-field col s12 m5 valign-wrapper">
                     <i class="material-icons prefix icon-blue">search</i>
                     <input id="searchBar" type="text" class="validate">
                     <label for="searchBar">Title</label>
@@ -88,8 +88,20 @@
                                 <p>Harry Styles, Tom Hardy, Cillian Murphy...</p>
                             </div>
                             <div class="card-action center-align">
-                               <a href="#" onclick="Materialize.toast('Added', 4000)" class="mr0"><i class="material-icons icon-blue">add</i></a>
-                               <a href="#" class="mr0" onclick="Materialize.toast('Watched', 4000)"><i class="material-icons icon-blue">remove_red_eye</i></a>
+                                <div class="row mb0">
+                                    <a href="#" class="mr0" onclick="Materialize.toast('Removed', 4000)"><i class="material-icons icon-blue">cancel</i></a>
+                                </div>
+                                <div class="row mb0">
+                                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
+                                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
+                                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
+                                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
+                                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
+                                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
+                                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
+                                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
+                                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star_border</i></a>
+                                </div>
                             </div>
                             </div>
                         </div>
@@ -107,7 +119,7 @@
                             <p>Harry Styles, Tom Hardy, Cillian Murphy...</p>
                         </div>
                         <div class="card-action center-align">
-                           <a href="#" onclick="Materialize.toast('Added', 4000)" class="mr0"><i class="material-icons icon-blue">add</i></a>
+                            <a href="#" class="mr0" onclick="Materialize.toast('Removed', 4000)"><i class="material-icons icon-blue">cancel</i></a>
                            <a href="#" class="mr0" onclick="Materialize.toast('Watched', 4000)"><i class="material-icons icon-blue">remove_red_eye</i></a>
                         </div>
                         </div>
