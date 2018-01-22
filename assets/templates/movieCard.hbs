@@ -18,17 +18,17 @@
                     <i class="material-icons icon-blue">cancel</i>
                 </a>
                 <div class="row mb0">
-                    <a href="#" class="mr0"><i class="  material-icons tiny icon-blue">star</i></a>
-                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
-                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
-                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
-                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
-                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
-                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
-                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
-                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star</i></a>
-                    <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star_border</i></a>
+                    {{#each movie.stars}}
+                    <a data-starId={{@index}} href="#" class="mr0"><i class="  material-icons tiny icon-blue">
+                        {{#if this.star}}
+                            star
+                        {{else}}
+                            star_border
+                        {{/if}}
+                        </i></a>
+                    {{/each}}
                 </div>
+                    {{!-- <a href="#" class="mr0"><i class="material-icons tiny icon-blue">star_border</i></a> --}}
             </div>
         </div>
     </div>
