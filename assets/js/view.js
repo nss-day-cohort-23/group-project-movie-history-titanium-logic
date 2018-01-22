@@ -7,12 +7,11 @@ const movieCard = require("./../templates/movieCard.hbs");
 
 module.exports.showMovies = (moviesArr)=>{
    // clearMovies()
-   $('#searchOutput').html('');
+   $('#movieList .row').html('');
    
    moviesArr.forEach((movie, key) => {
      if (key < 6) {
       let actors;
-      $("#movieList .row").html("");
       tmdb.getCast(movie.id)
          .then(cast=>{
             actors = tmdb.makeCastList(cast).join(', ');
