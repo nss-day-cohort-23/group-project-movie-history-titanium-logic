@@ -5,12 +5,26 @@ const auth = require("./user-factory");
 const tmdb = require('./tmdb');
 const view = require('./view');
 
+// activates all listeners
 module.exports.activateListeners = () => {
+    activateAuthButton();
+    activateLogoutButton();
+    activateSearch();
+};
 
+// activate listener on logout button
+const activateLogoutButton = () => {
+    $('#logout-btn').click(() => {
+        auth.logout();
+    });
+};
+
+// activate listener on auth/login/register button
+const activateAuthButton = () => {
     $('#auth-btn').click(() => {
         auth.authUser()
             .then(function (result) {
-                console.log('user', result);
+                auth.setActiveUser(result.user);
             })
             .catch(function (error) {
                 let errorCode = error.code;
@@ -18,13 +32,11 @@ module.exports.activateListeners = () => {
                 alert(errorCode, errorMsg);
             });
     });
+};
 
-
-    $('#logout-btn').click(() => {
-        auth.logout();
-    });
-
-
+// activate listener on search bar (enter key press only)
+    // populates resulting movie list
+const activateSearch = () => {
     $('#searchBar').on('keypress', function (e) {
         if (e.keyCode === 13) {
             let search = $('#searchBar').val();
@@ -34,11 +46,4 @@ module.exports.activateListeners = () => {
                 });
         }
     });
-
-};
-
-
-const activateSearch = () => {
-    // checks active tab in listener
-    // on enter listener
 };
