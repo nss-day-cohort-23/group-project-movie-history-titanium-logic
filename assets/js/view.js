@@ -76,7 +76,7 @@ const clearMovies = () => {
 
 
 module.exports.rePrintMovie = (movie) => {
-  $(`div[data-movieid='${movie.id}']`).parents(".movieParent").attr("class", `movieParent col s12 m6 ${movie.class}`);
-  $(`div[data-movieid='${movie.id}']`).replaceWith(movieControls(movie));
-  console.log('$(`div[data-movieid="${movie.id}"]`).parents(".movieParent")', $(`div[data-movieid='${movie.id}']`).parents(".movieParent"));
+  $controls = $(`div[data-movieid='${movie.id}']`);
+  $controls.parents(".movieParent").attr("class", `movieParent col s12 m6 ${movie.class}`);
+  $controls.replaceWith(movieControls(movie));
 };
