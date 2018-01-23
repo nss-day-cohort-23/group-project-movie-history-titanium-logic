@@ -46,6 +46,8 @@ module.exports.showMovies = (moviesArr)=>{
       }
       movie.stars = movieStars;
 
+    } else {
+      movie.class = "tmdb";
     }
     
 

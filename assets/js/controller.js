@@ -12,9 +12,8 @@ module.exports.activateListeners = () => {
     activateLogoutButton();
     activateSearch();
     view.viewLogin();
+    activateTabs();
 };
-
-
 
 // activate listener on logout button
 const activateLogoutButton = () => {
@@ -61,5 +60,23 @@ const activateSearch = () => {
       // .then(() => {
       //     displayTodos(todoObj.uid);
       // });
+    });
+};
+
+const activateTabs = () => {
+    $("#show-all").on("click", event => {
+        $("#movieList > .row > .col").show();
+    });
+    $("#show-wishlist").on("click", event => {
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .wishlist").show();
+    });
+    $("#show-watched").on("click", event => {
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .watched").show();
+    });
+    $("#show-favorite").on("click", event => {
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .favorite").show();
     });
 };
