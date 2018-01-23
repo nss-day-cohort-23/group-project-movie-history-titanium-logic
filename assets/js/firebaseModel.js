@@ -58,6 +58,12 @@ module.exports.deleteMovie = (uid, movieId) => {
     
 };
 
-module.exports.search = (uid, term) => {
-    
+module.exports.searchMovies = (uid, term) => {
+    return new Promise((resolve, reject) => {
+        module.exports.getMoviesById(uid).then(movies => {
+            let regex = new RegExp(term, "i");
+            resolve(movies.filter(movie => regex.test(movie.title)));
+        })
+        .catch(error => reject(error));
+    });
 };
