@@ -66,9 +66,22 @@ module.exports.addMovie = (newMovie) => {
     });
 };
 
-module.exports.deleteMovie = (uid, movieId) => {
-    
-};
+module.exports.deleteMovie = (key) => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+          url: `${fbURL}/movies/${key}/.json`,
+          method: "DELETE"
+        })
+        .done(data => {
+            resolve(data);
+            console.log("deleted");
+        })
+        .fail(error => {
+            console.log(error.statusText);
+            reject(error);
+        });
+      });
+    };
 
 module.exports.searchMovies = (term, uid) => {
     return new Promise((resolve, reject) => {

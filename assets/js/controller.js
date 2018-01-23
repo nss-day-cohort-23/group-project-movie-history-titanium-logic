@@ -18,6 +18,24 @@ module.exports.activateListeners = () => {
     activateStars();
 };
 
+const activateTabs = () => {
+  $("#show-all").on("click", event => {
+      $("#movieList > .row > .col").show();
+  });
+  $("#show-wishlist").on("click", event => {
+      $("#movieList > .row > .col").hide();
+      $("#movieList > .row > .wishlist").show();
+  });
+  $("#show-watched").on("click", event => {
+      $("#movieList > .row > .col").hide();
+      $("#movieList > .row > .watched").show();
+  });
+  $("#show-favorite").on("click", event => {
+      $("#movieList > .row > .col").hide();
+      $("#movieList > .row > .favorite").show();
+  });
+};
+
 // activate listener on logout button
 const activateLogoutButton = () => {
     $('#logout-btn').click(() => {
@@ -79,15 +97,31 @@ const activateSearch = () => {
       };
 
       fbModel.addMovie(newMovie).then(movie => {
+          console.log(movie);
           newMovie = view.addDetails(newMovie);
           view.rePrintMovie(newMovie);
       });
     });
+  
 
-    $("#movieList").on("click", ".star", function (e) {
-        // console.log($(this).data('data-starid'));
-    });
-};
+
+
+
+//     $("#movieList").on("click", ".star", function (e) {
+//         // console.log($(this).data('data-starid'));
+//     });
+// };
+
+
+    // $("#movieList").on("click", ".deleter", function() {     
+      // let movieId = $(e.target).parent().data("movieid");
+      // let key = 
+      // fbModel.deleteMovie(key)
+      // .then(() => {
+      //    // update class of movie to tmdb from wished
+      // });
+  // });
+// };
 
 const activateTabs = () => {
     $("#show-all").on("click", event => {
@@ -124,3 +158,4 @@ const activateStars = () => {
           });
     });
 };
+
