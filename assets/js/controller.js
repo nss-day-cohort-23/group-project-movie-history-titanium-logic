@@ -11,19 +11,14 @@ module.exports.activateListeners = () => {
     activateAuthButton();
     activateLogoutButton();
     activateSearch();
+<<<<<<< HEAD
     view.checkLogin();
+=======
+    view.viewLogin();
+>>>>>>> 59833201e607818c87f1a3f80fd5dbba882e3357
 };
 
-// Listen to if the user is logged in
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) { // User is logged   in
-    $("#auth-btn").hide();
-    $("#logout-btn").show();
-  } else { // No user is logged in
-    $("#logout-btn").hide();
-    $("#auth-btn").show();
-  }
-});
+
 
 // activate listener on logout button
 const activateLogoutButton = () => {
@@ -72,4 +67,3 @@ const activateSearch = () => {
       // });
     });
 };
-
