@@ -14,6 +14,8 @@ module.exports.activateListeners = () => {
 
     view.checkLogin();
     activateTabs();
+    
+    activateStars();
 };
 
 // activate listener on logout button
@@ -98,5 +100,21 @@ const activateTabs = () => {
     $("#show-favorite").on("click", event => {
         $("#movieList > .row > .col").hide();
         $("#movieList > .row > .favorite").show();
+    });
+};
+
+const activateStars = () => {
+    $("#movieList").on("mouseenter", ".star-wrapper", function(){
+        $(this).prevAll().children(".material-icons").text("star");
+        $(this).nextAll().children(".material-icons").text("star_border");
+    });
+    
+    $("#movieList").on("mouseleave", ".stars-wrapper", function(){
+        let  $starsWrapper = $(this);
+        $(this).children(".material-icons").each(function( index ) {
+            if(index <  $starsWrapper.data("originalStars")){
+                $(this).text('star');
+            }
+          });
     });
 };
