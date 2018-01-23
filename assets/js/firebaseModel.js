@@ -4,6 +4,7 @@ const firebase = require("./fbConfig");
 const $ = require("jquery");
 const _ = require('lodash');
 
+
 const fbURL = "https://titanium-logic.firebaseio.com";
 
 // tested: works without uid
@@ -58,6 +59,14 @@ module.exports.deleteMovie = (uid, movieId) => {
     
 };
 
-module.exports.search = (uid, term) => {
-    
+module.exports.searchMovies = (uid, term) => {
+    return new Promise((resolve, reject) => {
+        getMovies(uid).then(movies => {
+            let regex = new RegExp(term, "i");
+            resolve(movies.filter(movie => regex.test(movie.title)));
+        })
+        .catch(error => reject(error));
+    });
 };
+
+module.exports.getMovies = getMovies;
