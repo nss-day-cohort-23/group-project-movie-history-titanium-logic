@@ -70,4 +70,11 @@ const activateSearch = () => {
       //     view.showMovies(newMovie.uid);
       // });
     });
+
+    $("#movieList").on("click", ".deleter", function(e) {     
+      let movieId = $(e.target).parent().data("movieid");
+      fbModel.deleteMovie("-L3Yafq_b568lXxp9ADF");
+      // .then(() => {
+      //    // update class of movie to tmdb from wished
+      });
 };
