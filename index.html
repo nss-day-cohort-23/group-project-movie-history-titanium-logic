@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css" media="screen,projection"
+    />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -16,18 +18,27 @@
 
     <nav class="blue-grey lighten-2 margin-bottom">
         <div class="nav-wrapper container">
-                
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
             <a href="#" class="brand-logo">Titanium Logic</a>
             <ul class="right">
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#" id="auth-btn">Login/Register</a></li>
-                <li><a href="#" id="logout-btn">Logout</a></li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-                <li><a href="#" id="auth-btn">Login/Register</a></li>
-                <li><a href="#" id="logout-btn">Logout</a></li>
-            </ul>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="#" id="auth-btn">Login/Register</a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout-btn">Logout</a>
+                    </li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li>
+                        <a href="#" id="auth-btn">Login/Register</a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout-btn">Logout</a>
+                    </li>
+                </ul>
         </div>
     </nav>
 
@@ -37,12 +48,21 @@
             <div class="row">
                 <div class="col s12 m7">
                     <ul class="tabs">
-                        <li class="tab col"><a class="blue-grey-text active" href="#">Search</a></li>
-                        <li class="tab col"><a class="blue-grey-text" href="#">Wishlist</a></li>
+                        <li class="tab col">
+                            <a id="show-all" class="blue-grey-text active" href="#">Search</a>
+                        </li>
+                        <li class="tab col">
+                            <a id="show-wishlist" class="blue-grey-text" href="#">Wishlist</a>
+                        </li>
                         <!-- <li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li> -->
-                        <li class="tab col"><a class="blue-grey-text" href="#">Watched</a></li>
-                        <li class="tab col"><a class="blue-grey-text" href="#">Favorites</a></li>
-                        <div class="indicator blue-grey" style="z-index:1"></di v>
+                        <li class="tab col">
+                            <a id="show-watched" class="blue-grey-text" href="#">Watched</a>
+                        </li>
+                        <li class="tab col">
+                            <a id="show-favorite" class="blue-grey-text" href="#">Favorites</a>
+                        </li>
+                        <div class="indicator blue-grey" style="z-index:1">
+                        </div>
                     </ul>
                 </div>
                 <div class="input-field col s12 m5 valign-wrapper">
@@ -55,9 +75,9 @@
 
         <div id="movieList" class="container">
             <!-- <div class="container"> -->
-                <!-- Search Card -->
+            <!-- Search Card -->
             <div class="row">
-                
+
             </div>
             <!-- </div> -->
         </div>
@@ -72,16 +92,17 @@
             </div>
         </div> -->
         <!-- <div class="footer-copyright"> -->
-            <div class="container center-align margin-bottom">
+        <div class="container center-align margin-bottom">
             © 2018 Titanium Logic
             <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
-            </div>
+        </div>
         <!-- </div> -->
     </footer>
-        
 
-        <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.js"></script>
-        <script src="dist/bundle.js"></script>
+
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.js"></script>
+    <script src="dist/bundle.js"></script>
 </body>
+
 </html>
