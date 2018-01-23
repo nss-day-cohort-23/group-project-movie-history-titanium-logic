@@ -110,7 +110,9 @@ const activateStars = () => {
     });
     
     $("#movieList").on("mouseleave", ".stars-wrapper", function(){
+        console.log("out");
         let  $starsWrapper = $(this);
+        console.log('$starsWrapper', $starsWrapper);
         $(this).children(".material-icons").each(function( index ) {
             if(index <  $starsWrapper.data("originalStars")){
                 $(this).text('star');
