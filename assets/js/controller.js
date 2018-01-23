@@ -64,11 +64,11 @@ const activateSearch = () => {
 
     $("#movieList").on("click", ".deleter", function(e) {     
       let movieId = $(e.target).parent().data("movieid");
-      fbModel.deleteMovie("-L3Yafq_b568lXxp9ADF");
+      fbModel.deleteMovie("-L3Yafq_b568lXxp9ADF")
       .then(() => {
       //    // update class of movie to tmdb from wished
-      });
-};
+      })
+});
 
 const activateTabs = () => {
     $("#show-all").on("click", event => {
@@ -86,4 +86,5 @@ const activateTabs = () => {
         $("#movieList > .row > .col").hide();
         $("#movieList > .row > .favorite").show();
     });
-};
+  }
+}
