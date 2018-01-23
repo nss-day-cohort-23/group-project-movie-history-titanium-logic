@@ -1,3 +1,4 @@
+
 <div class="movieParent col s12 m6 {{movie.class}}">
     <div class="card small horizontal">
         
@@ -19,9 +20,10 @@
                     <i class="material-icons icon-blue">cancel</i>
                 </a>
                 
-                <div class="row mb0">
+                <div class="row mb0 stars-wrapper" data-originalStars="{{movie.starsCount}}">
                     {{#each movie.stars}}
-                    <a data-starId={{@index}} href="#" class="mr0 star"><i class="  material-icons tiny icon-blue">
+                    
+                    <a data-starId={{@index}} href="#" class="mr0 star-wrapper"><i class="  material-icons tiny icon-blue">
                         {{#if this.star}}
                             star
                         {{else}}

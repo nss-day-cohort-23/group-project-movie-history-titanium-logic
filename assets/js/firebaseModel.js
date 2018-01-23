@@ -54,6 +54,7 @@ module.exports.rateMovie = (uid, movieId, stars) => {
 };
 
 module.exports.addMovie = (newMovie) => {
+
     return new Promise((resolve, reject) => {
         $.ajax({
             url: `${fbURL}/movies.json`,

@@ -56,7 +56,8 @@ module.exports.showMovies = (moviesArr) => {
 
     moviesArr.map(movie => {
         movie.release_date = movie.release_date.substring(0, 4);
-
+        movie.starsCount = movie.stars;
+        
         if (typeof movie.stars !== "undefined") {
             if (movie.stars >= 8) {
                 movie.class = "favorite";
