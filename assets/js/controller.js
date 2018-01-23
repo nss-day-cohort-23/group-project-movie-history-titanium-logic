@@ -11,8 +11,11 @@ module.exports.activateListeners = () => {
     activateAuthButton();
     activateLogoutButton();
     activateSearch();
+
     view.checkLogin();
     activateTabs();
+    
+    activateStars();
 };
 
 const activateTabs = () => {
@@ -103,6 +106,7 @@ const activateSearch = () => {
 
 
 
+
 //     $("#movieList").on("click", ".star", function (e) {
 //         // console.log($(this).data('data-starid'));
 //     });
@@ -118,3 +122,40 @@ const activateSearch = () => {
       // });
   // });
 // };
+
+const activateTabs = () => {
+    $("#show-all").on("click", event => {
+        $("#movieList > .row > .col").show();
+    });
+    $("#show-wishlist").on("click", event => {
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .wishlist").show();
+    });
+    $("#show-watched").on("click", event => {
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .watched").show();
+    });
+    $("#show-favorite").on("click", event => {
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .favorite").show();
+    });
+};
+
+const activateStars = () => {
+    $("#movieList").on("mouseenter", ".star-wrapper", function(){
+        $(this).prevAll().children(".material-icons").text("star");
+        $(this).nextAll().children(".material-icons").text("star_border");
+    });
+    
+    $("#movieList").on("mouseleave", ".stars-wrapper", function(){
+        console.log("out");
+        let  $starsWrapper = $(this);
+        console.log('$starsWrapper', $starsWrapper);
+        $(this).children(".material-icons").each(function( index ) {
+            if(index <  $starsWrapper.data("originalStars")){
+                $(this).text('star');
+            }
+          });
+    });
+};
+
