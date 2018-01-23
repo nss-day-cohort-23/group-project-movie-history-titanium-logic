@@ -16,6 +16,17 @@ module.exports.getMoviesById = (id) => {
     });
 };
 
+// tested: works without uid
+module.exports.getAllMovies = (uid) => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            // dateWatched == null (isn't defined)
+            url: `https://titanium-logic.firebaseio.com/movies.json?orderBy="uid"&equalTo=${uid}`
+        }).done(movies => resolve(movies))
+        .fail(error => reject(error));
+    });
+};
+
 module.exports.getMovieByIdAndUid = (id,uid)=>{
     return new Promise((resolve,reject)=>{
         module.exports.getMoviesById(id)
@@ -57,11 +68,11 @@ module.exports.deleteMovie = (uid, movieId) => {
     
 };
 
-module.exports.searchMovies = (uid, term) => {
+module.exports.searchMovies = (term, uid) => {
     return new Promise((resolve, reject) => {
-        module.exports.getMoviesById(uid).then(movies => {
+        module.exports.getAllMovies(uid).then(movies => {
             let regex = new RegExp(term, "i");
-            resolve(movies.filter(movie => regex.test(movie.title)));
+            resolve(_.filter(movies, movie => regex.test(movie.title)));
         })
         .catch(error => reject(error));
     });

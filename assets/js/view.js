@@ -8,7 +8,7 @@ const firebase = require("firebase");
 
 module.exports.viewLogin = () => {
   // Listen to if the user is logged in
-  firebase.auth().onAuthStateChanged(function(user) {
+  firebase.auth().onAuthStateChanged(function (user) {
     if (user) { // User is logged   in
       $("#auth-btn").hide();
       $("#logout-btn").show();
@@ -19,16 +19,16 @@ module.exports.viewLogin = () => {
   });
 };
 
-module.exports.showMovies = (moviesArr)=>{
+module.exports.showMovies = (moviesArr) => {
   clearMovies();
 
   moviesArr.map(movie => {
     movie.release_date = movie.release_date.substring(0, 4);
-    
-    if(typeof movie.stars !== "undefined"){
-      if(movie.stars >= 8){
+
+    if (typeof movie.stars !== "undefined") {
+      if (movie.stars >= 8) {
         movie.class = "favorite";
-      } else if(movie.stars === 0){
+      } else if (movie.stars === 0) {
         movie.class = "wishlist";
       } else {
         movie.class = "watched";
@@ -37,9 +37,9 @@ module.exports.showMovies = (moviesArr)=>{
       // Add  objects for handelbars to loop over to know the count.  Handlebars does not have a for loop, but it does have foreach.
 
       let movieStars = [];
-      for(let i = 0; i < 10; i++){ 
-        if(i < movie.stars){
-          movieStars.push({star: true});
+      for (let i = 0; i < 10; i++) {
+        if (i < movie.stars) {
+          movieStars.push({ star: true });
         } else {
           movieStars.push({});
         }
@@ -49,23 +49,22 @@ module.exports.showMovies = (moviesArr)=>{
     } else {
       movie.class = "tmdb";
     }
-    
+
 
     return movie;
   });
 
-
-    moviesArr.forEach((movie, key) => {
-        if (key < 6) {
-            tmdb.getCast(movie.id)
-                .then(cast => {
-                    movie.cast = cast;
-                    $('#movieList > .row').append(movieCard({ movie }));
-                });
-        }
-    });
+  moviesArr.forEach((movie, key) => {
+    if (key < 6) {
+      tmdb.getCast(movie.id)
+        .then(cast => {
+          movie.cast = cast;
+          $('#movieList > .row').append(movieCard({ movie }));
+        });
+    }
+  });
 };
 
 const clearMovies = () => {
-    $('#movieList > .row').html('');
+  $('#movieList > .row').html('');
 };
