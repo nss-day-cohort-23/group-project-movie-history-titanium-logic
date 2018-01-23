@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-{{#if movie.class}}
-    <div class="movieParent col s12 m6 {{movie.class}}">
-{{else}}
-    <div class="movieParent col s12 m6 tmdb">
-{{/if}}
-=======
+
 <div class="movieParent col s12 m6 {{movie.class}}">
->>>>>>> 9d285f3f17e8fbf4817feaf6369f9717c8645120
     <div class="card small horizontal">
         
         <div class="card-image">
@@ -27,7 +20,7 @@
                     <i class="material-icons icon-blue">cancel</i>
                 </a>
                 
-                <div class="row mb0">
+                <div class="row mb0 star-wrapper">
                     {{#each movie.stars}}
                     <a data-starId={{@index}} href="#" class="mr0"><i class="  material-icons tiny icon-blue">
                         {{#if this.star}}
