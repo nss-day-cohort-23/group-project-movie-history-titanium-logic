@@ -2,7 +2,6 @@
     "movies": {
         "-L3FKJunNY4XPANJcDYU": {
             "dateAdded": 1358285417,
-            "dateWatched": 1358631017,
             "id": 68726,
             "name": "Pacific Rim",
             "stars": 4,
@@ -12,7 +11,7 @@
             "dateAdded": 1482701417,
             "id": 330459,
             "name": "Rogue One: A Star Wars Story",
-            "stars": 4,
+            "stars": 0,
             "uid": 0
         }
     }
