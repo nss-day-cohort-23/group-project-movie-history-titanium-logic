@@ -1,7 +1,7 @@
 {{#if movie.class}}
-    <div class="col s12 m6 {{movie.class}}">
+    <div class="movieParent col s12 m6 {{movie.class}}">
 {{else}}
-    <div class="col s12 m6 tmdb">
+    <div class="movieParent col s12 m6 tmdb">
 {{/if}}
     <div class="card small horizontal">
         
@@ -14,7 +14,7 @@
                 <p>{{movie.release_date}}</p>
                 <p>{{movie.cast}}</p>
             </div>
-            <div class="card-action center-align" data-movieId="{{movie.id}}" >
+            <div class="card-action center-align controls" data-movieId="{{movie.id}}" >
 
                 {{!-- <button class="wish">add to wish</button> --}}
                 <i class="material-icons icon-blue wish">add</i>

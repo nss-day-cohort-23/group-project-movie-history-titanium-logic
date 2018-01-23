@@ -22,15 +22,18 @@ module.exports.rateMovie = (uid, movieId, stars) => {
 };
 
 module.exports.addMovie = (newMovie) => {
-        return new Promise((resolve, reject) => {
-          $.ajax({
+    let movieJson = JSON.stringify(newMovie);
+    console.log('movieJson', movieJson);
+    
+    return new Promise((resolve, reject) => {
+        $.ajax({
             url: `${fbURL}/movies.json`,
             method: "POST",
-            data: JSON.stringify(newMovie)
-          }).done(() => {
-            resolve();
-          });
+            data: movieJson
+        }).done(data => {
+            resolve(data);
         });
+    });
 };
 
 module.exports.deleteMovie = (uid, movieId) => {
