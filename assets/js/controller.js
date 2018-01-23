@@ -13,9 +13,8 @@ module.exports.activateListeners = () => {
     activateSearch();
 
     view.checkLogin();
+    activateTabs();
 };
-
-
 
 // activate listener on logout button
 const activateLogoutButton = () => {
@@ -64,5 +63,23 @@ const activateSearch = () => {
           newMovie = view.addDetails(newMovie);
           view.rePrintMovie(newMovie);
       });
+    });
+};
+
+const activateTabs = () => {
+    $("#show-all").on("click", event => {
+        $("#movieList > .row > .col").show();
+    });
+    $("#show-wishlist").on("click", event => {
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .wishlist").show();
+    });
+    $("#show-watched").on("click", event => {
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .watched").show();
+    });
+    $("#show-favorite").on("click", event => {
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .favorite").show();
     });
 };

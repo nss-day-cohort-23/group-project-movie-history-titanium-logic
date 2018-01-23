@@ -22,14 +22,12 @@ module.exports.rateMovie = (uid, movieId, stars) => {
 };
 
 module.exports.addMovie = (newMovie) => {
-    let movieJson = JSON.stringify(newMovie);
-    console.log('movieJson', movieJson);
-    
+
     return new Promise((resolve, reject) => {
         $.ajax({
             url: `${fbURL}/movies.json`,
             method: "POST",
-            data: movieJson
+            data: JSON.stringify(newMovie)
         }).done(data => {
             resolve(data);
         });

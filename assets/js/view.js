@@ -53,7 +53,7 @@ module.exports.showMovies = (moviesArr)=>{
 
   moviesArr.map(movie => {
     movie.release_date = movie.release_date.substring(0, 4);
-    
+
     movie = module.exports.addDetails(movie);
 
     return movie;
@@ -76,7 +76,7 @@ const clearMovies = () => {
 
 
 module.exports.rePrintMovie = (movie) => {
-  $(`div[data-movieid='${movie.id}']`).parents(".movieParent").attr("class", `movieParent col s12 m6 ${movie.class}`);
-  $(`div[data-movieid='${movie.id}']`).replaceWith(movieControls(movie));
-  console.log('$(`div[data-movieid="${movie.id}"]`).parents(".movieParent")', $(`div[data-movieid='${movie.id}']`).parents(".movieParent"));
+  let $controls = $(`div[data-movieid='${movie.id}']`);
+  $controls.parents(".movieParent").attr("class", `movieParent col s12 m6 ${movie.class}`);
+  $controls.replaceWith(movieControls(movie));
 };
