@@ -1,0 +1,20 @@
+
+{{!-- <button class="wish">add to wish</button> --}}
+<div class="card-action center-align controls" data-movieId="{{id}}" >
+    <i class="material-icons icon-blue wish">add</i>
+
+    <a href="#" onclick="Materialize.toast('Added', 4000)" class="mr0">
+        <i class="material-icons icon-blue">cancel</i>
+    </a>
+
+    <div class="row mb0">
+        {{#each stars}}
+        <a data-starId={{@index}} href="#" class="mr0"><i class="  material-icons tiny icon-blue">
+            {{#if this.star}}
+                star
+        {{else}}
+                star_border
+            {{/if}}
+            </i></a>
+    {{/each}}
+</div>
