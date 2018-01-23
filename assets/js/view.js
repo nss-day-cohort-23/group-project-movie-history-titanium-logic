@@ -51,9 +51,10 @@ module.exports.addDetails = (movie) => {
 module.exports.showMovies = (moviesArr)=>{
   clearMovies();
 
+
   moviesArr.map(movie => {
     movie.release_date = movie.release_date.substring(0, 4);
-    
+
     movie = module.exports.addDetails(movie);
 
     return movie;
