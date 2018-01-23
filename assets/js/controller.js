@@ -11,18 +11,9 @@ module.exports.activateListeners = () => {
     activateAuthButton();
     activateLogoutButton();
     activateSearch();
+    view.viewLogin();
+    activateTabs();
 };
-
-// Listen to if the user is logged in
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) { // User is logged   in
-    $("#auth-btn").hide();
-    $("#logout-btn").show();
-  } else { // No user is logged in
-    $("#logout-btn").hide();
-    $("#auth-btn").show();
-  }
-});
 
 // activate listener on logout button
 const activateLogoutButton = () => {
@@ -74,7 +65,25 @@ const activateSearch = () => {
     $("#movieList").on("click", ".deleter", function(e) {     
       let movieId = $(e.target).parent().data("movieid");
       fbModel.deleteMovie("-L3Yafq_b568lXxp9ADF");
-      // .then(() => {
+      .then(() => {
       //    // update class of movie to tmdb from wished
       });
+};
+
+const activateTabs = () => {
+    $("#show-all").on("click", event => {
+        $("#movieList > .row > .col").show();
+    });
+    $("#show-wishlist").on("click", event => {
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .wishlist").show();
+    });
+    $("#show-watched").on("click", event => {
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .watched").show();
+    });
+    $("#show-favorite").on("click", event => {
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .favorite").show();
+    });
 };
