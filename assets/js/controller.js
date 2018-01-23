@@ -83,6 +83,10 @@ const activateSearch = () => {
           view.rePrintMovie(newMovie);
       });
     });
+
+    $("#movieList").on("click", ".star", function (e) {
+        // console.log($(this).data('data-starid'));
+    });
 };
 
 const activateTabs = () => {
