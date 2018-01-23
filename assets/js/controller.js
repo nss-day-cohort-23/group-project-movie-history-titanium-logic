@@ -11,7 +11,7 @@ module.exports.activateListeners = () => {
     activateAuthButton();
     activateLogoutButton();
     activateSearch();
-    view.viewLogin();
+    view.checkLogin();
     activateTabs();
 };
 
@@ -54,12 +54,14 @@ const activateSearch = () => {
       // let currentUser = firebase.auth().currentUser;
       let newMovie = {
         id: $(e.target).parent().data("movieid"),
-        title: $(e.target).parent().prev().find("h5").text()
+        title: $(e.target).parent().prev().find("h5").text(),
+        stars: 0
       };
-      fbModel.addMovie(newMovie);
-      // .then(() => {
-      //     displayTodos(todoObj.uid);
-      // });
+
+      fbModel.addMovie(newMovie).then(movie => {
+          newMovie = view.addDetails(newMovie);
+          view.rePrintMovie(newMovie);
+      });
     });
 };
 
