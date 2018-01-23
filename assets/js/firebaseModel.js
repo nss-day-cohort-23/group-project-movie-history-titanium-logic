@@ -3,7 +3,6 @@
 const firebase = require("./fbConfig");
 const $ = require("jquery");
 const _ = require('lodash');
-
 const fbURL = "https://titanium-logic.firebaseio.com";
 
 // tested: works without uid
