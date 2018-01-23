@@ -99,6 +99,15 @@ const activateSearch = () => {
           view.rePrintMovie(newMovie);
       });
     });
+  
+
+
+
+//     $("#movieList").on("click", ".star", function (e) {
+//         // console.log($(this).data('data-starid'));
+//     });
+// };
+
 
     // $("#movieList").on("click", ".deleter", function() {     
       // let movieId = $(e.target).parent().data("movieid");
@@ -108,4 +117,4 @@ const activateSearch = () => {
       //    // update class of movie to tmdb from wished
       // });
   // });
-};
+// };
