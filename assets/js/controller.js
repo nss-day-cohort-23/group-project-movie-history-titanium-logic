@@ -38,13 +38,30 @@ const activateAuthButton = () => {
     });
 };
 
+const searchAllMovies = (term, uid) => {
+    return new Promise((resolve, reject) => {
+        tmdb.searchMovies(term).then(tmdbMovies => {
+            fbModel.searchMovies(term, uid).then(fbMovies => {
+                let promises = fbMovies.map(movie => {
+                    return tmdb.loadInfo(movie);
+                });
+                Promise.all(promises).then(fbMovies => {
+                    // returns fbMovies first, then tmdbMovies, in same array
+                    resolve(fbMovies.concat(tmdbMovies));
+                });
+            }).catch(error => reject(error));
+        });
+    });
+};
+
 // activate listener on search bar (enter key press only)
     // populates resulting movie list
 const activateSearch = () => {
     $('#searchBar').on('keypress', function (e) {
         if (e.keyCode === 13) {
             let search = $('#searchBar').val();
-            tmdb.searchMovies(search)
+            // need to get uid too
+            searchAllMovies(search, 0)
                 .then(list => {
                     view.showMovies(list);
                 });
