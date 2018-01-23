@@ -7,13 +7,13 @@ const _ = require("lodash");
 const fbURL = "https://titanium-logic.firebaseio.com";
 
 // tested: works without uid
-const getMovies = (uid) => {
+module.exports.getMoviesById = (id) => {
     return new Promise((resolve, reject) => {
         $.ajax({
             // dateWatched == null (isn't defined)
-            url: `https://titanium-logic.firebaseio.com/movies.json?orderBy="dateAdded"`
-        }).done(movies => resolve(_.values(movies)))
-        .fail(error => reject(error));
+            url: `https://titanium-logic.firebaseio.com/movies.json?orderBy="id"&equalTo=${id}`
+        }).done(wishlist => resolve(wishlist))
+            .fail(error => reject(error));
     });
 };
 
@@ -28,7 +28,7 @@ module.exports.getAllMovies = (uid) => {
     });
 };
 
-module.exports.getMovieByIdAndUid = (id,uid)=>{
+module.exports.getKeyByIdAndUid = (id,uid)=>{
     return new Promise((resolve,reject)=>{
         module.exports.getMoviesById(id)
         .then((list)=>{
@@ -38,7 +38,19 @@ module.exports.getMovieByIdAndUid = (id,uid)=>{
 };
 
 module.exports.rateMovie = (uid, movieId, stars) => {
-    // determine number of filled stars for movie
+    let rating = {"stars":stars};
+    module.exports.getMovieByIdAndUid(movieId, uid)
+    .then((key)=>{
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: `${fbURL}/movies/${key}.json`,
+                method: "PATCH",
+                data: JSON.stringify(rating)
+            }).done(() => {
+                resolve();
+            });
+        }); 
+    });
 };
 
 module.exports.addMovie = (newMovie) => {
@@ -59,7 +71,7 @@ module.exports.deleteMovie = (uid, movieId) => {
 
 module.exports.searchMovies = (term, uid) => {
     return new Promise((resolve, reject) => {
-        getMovies(uid).then(movies => {
+        module.exports.getAllMovies(uid).then(movies => {
             let regex = new RegExp(term, "i");
             resolve(_.filter(movies, movie => regex.test(movie.title)));
         })
@@ -67,4 +79,3 @@ module.exports.searchMovies = (term, uid) => {
     });
 };
 
-module.exports.getMovies = getMovies;
