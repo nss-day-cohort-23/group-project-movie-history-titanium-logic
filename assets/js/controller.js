@@ -94,16 +94,18 @@ const activateSearch = () => {
       };
 
       fbModel.addMovie(newMovie).then(movie => {
+          console.log(movie);
           newMovie = view.addDetails(newMovie);
           view.rePrintMovie(newMovie);
       });
     });
 
-    $("#movieList").on("click", ".deleter", function(e) {     
-      let movieId = $(e.target).parent().data("movieid");
-      fbModel.deleteMovie("-L3Yafq_b568lXxp9ADF")
-      .then(() => {
+    // $("#movieList").on("click", ".deleter", function() {     
+      // let movieId = $(e.target).parent().data("movieid");
+      // let key = 
+      // fbModel.deleteMovie(key)
+      // .then(() => {
       //    // update class of movie to tmdb from wished
-      });
-  });
+      // });
+  // });
 };
