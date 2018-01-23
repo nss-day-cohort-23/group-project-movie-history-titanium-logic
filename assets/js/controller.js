@@ -41,12 +41,13 @@ const searchAllMovies = (term, uid) => {
     return new Promise((resolve, reject) => {
         tmdb.searchMovies(term).then(tmdbMovies => {
             fbModel.searchMovies(term, uid).then(fbMovies => {
-                fbMovies.forEach(movie => {
-                    movie.release_date = "get from tmdb";
+                let promises = fbMovies.map(movie => {
+                    return tmdb.loadInfo(movie);
                 });
-                // returns fbMovies first, then tmdbMovies, in same array
-                console.log(fbMovies.concat(tmdbMovies));
-                resolve(fbMovies.concat(tmdbMovies));
+                Promise.all(promises).then(fbMovies => {
+                    // returns fbMovies first, then tmdbMovies, in same array
+                    resolve(fbMovies.concat(tmdbMovies));
+                });
             }).catch(error => reject(error));
         });
     });
