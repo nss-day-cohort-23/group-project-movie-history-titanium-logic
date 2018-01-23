@@ -39,7 +39,7 @@ module.exports.getKeyByIdAndUid = (id,uid)=>{
 
 module.exports.rateMovie = (uid, movieId, stars) => {
     let rating = {"stars":stars};
-    module.exports.getMovieByIdAndUid(movieId, uid)
+    module.exports.getKeyByIdAndUid(movieId, uid)
     .then((key)=>{
         return new Promise((resolve, reject) => {
             $.ajax({
