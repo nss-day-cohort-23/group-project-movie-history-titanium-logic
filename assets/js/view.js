@@ -55,6 +55,7 @@ module.exports.showMovies = (moviesArr) => {
     clearMovies();
 
     moviesArr.map(movie => {
+        // console.log("movie", movie);
         movie.release_date = movie.release_date.substring(0, 4);
         movie.starsCount = movie.stars;
         
@@ -83,6 +84,7 @@ module.exports.showMovies = (moviesArr) => {
 
     // adds movies in order of search, not promise fulfillment
     let castPromises = moviesArr.map(movie => {
+        // console.log("movies arr", movie);
         return tmdb.getCast(movie.id);
     });
     Promise.all(castPromises).then(casts => {
