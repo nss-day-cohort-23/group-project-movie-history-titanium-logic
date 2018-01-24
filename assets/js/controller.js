@@ -15,26 +15,43 @@ module.exports.activateListeners = () => {
 
     view.checkLogin();
     activateTabs();
-    
+
     activateStars();
 };
 
 const activateTabs = () => {
-  $("#show-all").on("click", event => {
-      $("#movieList > .row > .col").show();
-  });
-  $("#show-wishlist").on("click", event => {
-      $("#movieList > .row > .col").hide();
-      $("#movieList > .row > .wishlist").show();
-  });
-  $("#show-watched").on("click", event => {
-      $("#movieList > .row > .col").hide();
-      $("#movieList > .row > .watched").show();
-  });
-  $("#show-favorite").on("click", event => {
-      $("#movieList > .row > .col").hide();
-      $("#movieList > .row > .favorite").show();
-  });
+    $("#show-all").on("click", event => {
+        let search = $('#searchBar').val();
+        if (search === '') {
+            $("#movieList > .row > .wishlist").empty();
+        }
+        $("#movieList > .row > .col").show();
+    });
+    $("#show-wishlist").on("click", event => {
+        let search = $('#searchBar').val();
+        if (search === '') {
+            $("#movieList > .row > .wishlist").empty();
+            getUserMovies(firebase.auth().currentUser.uid);
+        }
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .wishlist").show();
+    });
+    $("#show-watched").on("click", event => {
+        let search = $('#searchBar').val();
+        if (search === '') {
+            $("#movieList > .row > .wishlist").empty();
+        }
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .watched").show();
+    });
+    $("#show-favorite").on("click", event => {
+        let search = $('#searchBar').val();
+        if (search === '') {
+            $("#movieList > .row > .wishlist").empty();
+        }
+        $("#movieList > .row > .col").hide();
+        $("#movieList > .row > .favorite").show();
+    });
 };
 
 
@@ -92,21 +109,21 @@ const activateSearch = () => {
                 });
         }
     });
- 
-    $("#movieList").on("click", ".wish", function(e) {     
-      // let currentUser = firebase.auth().currentUser;
-      let newMovie = {
-        id: $(e.target).parent().data("movieid"),
-        title: $(e.target).parent().prev().find("h5").text(),
-        stars: 0,
-        uid: firebase.auth().currentUser.uid
-      };
 
-      fbModel.addMovie(newMovie).then(movie => {
-        //   console.log(movie);
-          newMovie = view.addDetails(newMovie);
-          view.rePrintMovie(newMovie);
-      });
+    $("#movieList").on("click", ".wish", function (e) {
+        // let currentUser = firebase.auth().currentUser;
+        let newMovie = {
+            id: $(e.target).parent().data("movieid"),
+            title: $(e.target).parent().prev().find("h5").text(),
+            stars: 0,
+            uid: firebase.auth().currentUser.uid
+        };
+
+        fbModel.addMovie(newMovie).then(movie => {
+            //   console.log(movie);
+            newMovie = view.addDetails(newMovie);
+            view.rePrintMovie(newMovie);
+        });
     });
 };
 
@@ -128,75 +145,31 @@ let getUserMovies = (uid) => {
         });
 };
 
-const activateTabs = () => {
-    $("#show-all").on("click", event => {
-        let search = $('#searchBar').val();
-        if (search === '') {
-            $("#movieList > .row > .wishlist").empty();
-        }
-        $("#movieList > .row > .col").show();
-    });
-
-    $("#show-wishlist").on("click", event => {
-        let search = $('#searchBar').val();
-        if (search === '') {
-            $("#movieList > .row > .wishlist").empty();
-            getUserMovies(firebase.auth().currentUser.uid);
-        }
-        $("#movieList > .row > .col").hide();
-        $("#movieList > .row > .wishlist").show();
-    });
-
-    $("#show-watched").on("click", event => {
-        let search = $('#searchBar').val();
-        if (search === '') {
-            $("#movieList > .row > .wishlist").empty();
-        }
-        $("#movieList > .row > .col").hide();
-        $("#movieList > .row > .watched").show();
-    });
-    
-    $("#show-favorite").on("click", event => {
-        let search = $('#searchBar').val();
-        if (search === '') {
-            $("#movieList > .row > .wishlist").empty();
-        }
-        $("#movieList > .row > .col").hide();
-        $("#movieList > .row > .favorite").show();
-    });
-};
-
-
-$("#movieList").on("click", ".deleter", function() {   
-    console.log("deleter was clicked");  
+$("#movieList").on("click", ".deleter", function () {
     let movieId = $(this).parent().data("movieid");
     let parent = $(".movieParent").has(this);
-    console.log("this parent", parent);
-    // console.log("what is this?", this);
-    // console.log("movieId", movieId);
     let currentUser = firebase.auth().currentUser.uid;
     fbModel.deleteMovie(currentUser, movieId);
     parent.addClass("hide");
-    // view.rePrintMovie()
 });
 
 
 
 const activateStars = () => {
-    $("#movieList").on("mouseenter", ".star-wrapper", function(){
+    $("#movieList").on("mouseenter", ".star-wrapper", function () {
         $(this).prevAll().children(".material-icons").text("star");
         $(this).nextAll().children(".material-icons").text("star_border");
     });
-    
-    $("#movieList").on("mouseleave", ".stars-wrapper", function(){
+
+    $("#movieList").on("mouseleave", ".stars-wrapper", function () {
         console.log("out");
-        let  $starsWrapper = $(this);
+        let $starsWrapper = $(this);
         console.log('$starsWrapper', $starsWrapper);
-        $(this).children(".material-icons").each(function( index ) {
-            if(index <  $starsWrapper.data("originalStars")){
+        $(this).children(".material-icons").each(function (index) {
+            if (index < $starsWrapper.data("originalStars")) {
                 $(this).text('star');
             }
-          });
+        });
     });
 };
 
