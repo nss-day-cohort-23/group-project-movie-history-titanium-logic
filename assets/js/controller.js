@@ -1,3 +1,4 @@
+
 'use strict';
 const $ = require('jquery');
 const firebase = require("./fbConfig");
@@ -36,23 +37,7 @@ const activateTabs = () => {
   });
 };
 
-// const activateTabs = () => {
-//     $("#show-all").on("click", event => {
-//         $("#movieList > .row > .col").show();
-//     });
-//     $("#show-wishlist").on("click", event => {
-//         $("#movieList > .row > .col").hide();
-//         $("#movieList > .row > .wishlist").show();
-//     });
-//     $("#show-watched").on("click", event => {
-//         $("#movieList > .row > .col").hide();
-//         $("#movieList > .row > .watched").show();
-//     });
-//     $("#show-favorite").on("click", event => {
-//         $("#movieList > .row > .col").hide();
-//         $("#movieList > .row > .favorite").show();
-//     });
-// };
+
 
 // activate listener on logout button
 const activateLogoutButton = () => {
@@ -80,6 +65,7 @@ const searchAllMovies = (term, uid) => {
     return new Promise((resolve, reject) => {
         tmdb.searchMovies(term).then(tmdbMovies => {
             fbModel.searchMovies(term, uid).then(fbMovies => {
+
                 let promises = fbMovies.map(movie => {
                     return tmdb.loadInfo(movie);
                 });
@@ -101,6 +87,7 @@ const activateSearch = () => {
             // need to get uid too
             searchAllMovies(search, 0)
                 .then(list => {
+                    // console.log("list", list);
                     view.showMovies(list);
                 });
         }
@@ -111,17 +98,28 @@ const activateSearch = () => {
       let newMovie = {
         id: $(e.target).parent().data("movieid"),
         title: $(e.target).parent().prev().find("h5").text(),
-        stars: 0
+        stars: 0,
+        uid: firebase.auth().currentUser.uid
       };
 
       fbModel.addMovie(newMovie).then(movie => {
-          console.log(movie);
+        //   console.log(movie);
           newMovie = view.addDetails(newMovie);
           view.rePrintMovie(newMovie);
       });
     });
 
 };
+
+$("#show-wishlist").on("click", function() {
+    console.log("show wish was clicked");
+    let currentUser = firebase.auth().currentUser.uid;
+    console.log("currentUser", currentUser);
+    fbModel.getAllMovies(currentUser)
+    .then( (movie) => {
+        console.log("what do I receive here?", movie);
+    });
+});
 
 
 
@@ -132,33 +130,20 @@ const activateSearch = () => {
 // };
 
 
-    // $("#movieList").on("click", ".deleter", function() {     
-      // let movieId = $(e.target).parent().data("movieid");
-      // let key = 
-      // fbModel.deleteMovie(key)
-      // .then(() => {
-      //    // update class of movie to tmdb from wished
-      // });
-  // });
-// };
+$("#movieList").on("click", ".deleter", function() {   
+    console.log("deleter was clicked");  
+    let movieId = $(this).parent().data("movieid");
+    let parent = $(".movieParent").has(this);
+    console.log("this parent", parent);
+    // console.log("what is this?", this);
+    // console.log("movieId", movieId);
+    let currentUser = firebase.auth().currentUser.uid;
+    fbModel.deleteMovie(currentUser, movieId);
+    parent.addClass("hide");
+    // view.rePrintMovie()
+});
 
-// const activateTabs = () => {
-//     $("#show-all").on("click", event => {
-//         $("#movieList > .row > .col").show();
-//     });
-//     $("#show-wishlist").on("click", event => {
-//         $("#movieList > .row > .col").hide();
-//         $("#movieList > .row > .wishlist").show();
-//     });
-//     $("#show-watched").on("click", event => {
-//         $("#movieList > .row > .col").hide();
-//         $("#movieList > .row > .watched").show();
-//     });
-//     $("#show-favorite").on("click", event => {
-//         $("#movieList > .row > .col").hide();
-//         $("#movieList > .row > .favorite").show();
-//     });
-// };
+
 
 const activateStars = () => {
     $("#movieList").on("mouseenter", ".star-wrapper", function(){

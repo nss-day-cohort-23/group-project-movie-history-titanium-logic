@@ -22,7 +22,7 @@ module.exports.getAllMovies = (uid) => {
     return new Promise((resolve, reject) => {
         $.ajax({
             // dateWatched == null (isn't defined)
-            url: `https://titanium-logic.firebaseio.com/movies.json?orderBy="uid"&equalTo=${uid}`
+            url: `https://titanium-logic.firebaseio.com/movies.json?orderBy="uid"&equalTo="${uid}"`
         }).done(movies => resolve(movies))
         .fail(error => reject(error));
     });
@@ -41,6 +41,7 @@ module.exports.rateMovie = (uid, movieId, stars) => {
     let rating = {"stars":stars};
     module.exports.getKeyByIdAndUid(movieId, uid)
     .then((key)=>{
+        // console.log("key", key);
         return new Promise((resolve, reject) => {
             $.ajax({
                 url: `${fbURL}/movies/${key}.json`,
@@ -66,19 +67,23 @@ module.exports.addMovie = (newMovie) => {
     });
 };
 
-module.exports.deleteMovie = (key) => {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-          url: `${fbURL}/movies/${key}/.json`,
-          method: "DELETE"
-        })
-        .done(data => {
-            resolve(data);
-            console.log("deleted");
-        })
-        .fail(error => {
-            console.log(error.statusText);
-            reject(error);
+module.exports.deleteMovie = (uid, movieId) => {
+    module.exports.getKeyByIdAndUid(movieId, uid)
+    .then( (key) => {
+        console.log("key", key);
+        return new Promise((resolve, reject) => {
+            $.ajax({
+              url: `${fbURL}/movies/${key}/.json`,
+              method: "DELETE"
+            })
+            .done(data => {
+                resolve(data);
+                console.log("deleted");
+            })
+            .fail(error => {
+                console.log(error.statusText);
+                reject(error);
+            });
         });
       });
     };
@@ -86,6 +91,7 @@ module.exports.deleteMovie = (key) => {
 module.exports.searchMovies = (term, uid) => {
     return new Promise((resolve, reject) => {
         module.exports.getAllMovies(uid).then(movies => {
+            // console.log("get All Movies", movies);
             let regex = new RegExp(term, "i");
             resolve(_.filter(movies, movie => regex.test(movie.title)));
         })
