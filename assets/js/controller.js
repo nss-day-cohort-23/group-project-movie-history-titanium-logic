@@ -54,7 +54,7 @@ const searchAllMovies = (term, uid) => {
 };
 
 // activate listener on search bar (enter key press only)
-    // populates resulting movie list
+// populates resulting movie list
 const activateSearch = () => {
     $('#searchBar').on('keypress', function (e) {
         if (e.keyCode === 13) {
@@ -66,35 +66,73 @@ const activateSearch = () => {
                 });
         }
     });
-    
-    $("#movieList").on("click", ".wish", function(e) {     
-      // let currentUser = firebase.auth().currentUser;
-      let newMovie = {
-        id: $(e.target).parent().data("movieid"),
-        title: $(e.target).parent().prev().find("h5").text(),
-        stars: 0
-      };
 
-      fbModel.addMovie(newMovie).then(movie => {
-          newMovie = view.addDetails(newMovie);
-          view.rePrintMovie(newMovie);
-      });
+    $("#movieList").on("click", ".wish", function (e) {
+        // let currentUser = firebase.auth().currentUser;
+        let newMovie = {
+            id: $(e.target).parent().data("movieid"),
+            title: $(e.target).parent().prev().find("h5").text(),
+            stars: 0,
+            uid: firebase.auth().currentUser.uid,
+        };
+
+        fbModel.addMovie(newMovie).then(movie => {
+            newMovie = view.addDetails(newMovie);
+            view.rePrintMovie(newMovie);
+        });
     });
+};
+
+let getUserMovies = (uid) => {
+    fbModel.getAllMovies(uid)
+        .then((movieArr) => {
+            let fbKeys = Object.keys(movieArr);
+            let fbArr = [];
+            fbKeys.forEach((key) => {
+                let movieInfoArr = [];
+                tmdb.loadInfo(movieArr[[key]])
+                    .then(movieInfo => {
+                        movieInfoArr.push(movieInfo);
+                        view.showMovies(movieInfoArr);
+                    });
+            });
+            view.showMovies(fbArr);
+        });
 };
 
 const activateTabs = () => {
     $("#show-all").on("click", event => {
+        let search = $('#searchBar').val();
+        if (search === '') {
+            $("#movieList > .row > .wishlist").empty();
+        }
         $("#movieList > .row > .col").show();
     });
+
     $("#show-wishlist").on("click", event => {
+        let search = $('#searchBar').val();
+        if (search === '') {
+            $("#movieList > .row > .wishlist").empty();
+            getUserMovies(firebase.auth().currentUser.uid);
+        }
         $("#movieList > .row > .col").hide();
         $("#movieList > .row > .wishlist").show();
     });
+
     $("#show-watched").on("click", event => {
+        let search = $('#searchBar').val();
+        if (search === '') {
+            $("#movieList > .row > .wishlist").empty();
+        }
         $("#movieList > .row > .col").hide();
         $("#movieList > .row > .watched").show();
     });
+    
     $("#show-favorite").on("click", event => {
+        let search = $('#searchBar').val();
+        if (search === '') {
+            $("#movieList > .row > .wishlist").empty();
+        }
         $("#movieList > .row > .col").hide();
         $("#movieList > .row > .favorite").show();
     });
