@@ -12,21 +12,21 @@ You will be split up into teams, and your team will build a new application to k
 
 ## Requirements
 
-- [ ] Must have the ability to register a user in Firebase
-- [ ] Must have the ability to log in
-- [ ] You must use Firebase to store movies
-    - [ ] You must be able to add movies
-    - [ ] You must be able to remove movies
-- [ ] Each movie must have the following properties
-   - [ ] Movie name
-   - [ ] Year released
-   - [ ] List of major actors
-   - [ ] Movie poster, if available
-   - [ ] An integer rating of 1-5
-   - [ ] A boolean value that, if true, means that you have watched the movie
-- [ ] Use Grunt to automate all the tasks needed during development.
-- [ ] For the layout, we suggest Bootstrap, but if you want to stretch your legs, you can try [Materialize](http://materializecss.com/).
-- [ ] Use of project tickets and features
+- Must have the ability to register a user in Firebase
+- Must have the ability to log in
+- You must use Firebase to store movies
+    - You must be able to add movies
+    - You must be able to remove movies
+- Each movie must have the following properties
+   - Movie name
+   - Year released
+   - List of major actors
+   - Movie poster, if available
+   - An integer rating of 1-5
+   - A boolean value that, if true, means that you have watched the movie
+- Use Grunt to automate all the tasks needed during development.
+- For the layout, we suggest Bootstrap, but if you want to stretch your legs, you can try [Materialize](http://materializecss.com/).
+- Use of project tickets and features
 
 ## Mockup
 
